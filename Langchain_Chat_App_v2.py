@@ -150,7 +150,7 @@ if check_password():
             #Define & call model
             stream_handler = StreamHandler(message_placeholder, display_method='write')
             llm = ChatOpenAI(model_name="gpt-3.5-turbo", streaming=True, callbacks=[stream_handler], temperature=0,
-                             max_tokens=256)  # Modify model_name if you have access to GPT-4
+                             max_tokens=128)  # Modify model_name if you have access to GPT-4
             chain = RetrievalQAWithSourcesChain.from_chain_type(
                 llm=llm,
                 chain_type="stuff",
