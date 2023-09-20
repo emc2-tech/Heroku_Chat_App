@@ -40,10 +40,6 @@ class StreamHandler(BaseCallbackHandler):
 
 
 
-#Use streamlit secrets to return API key
-os.environ["OPENAI_API_KEY"]
-
-
 if os.path.exists('DATA_STORE_DIR_v2'):
   vector_store = FAISS.load_local(
       'DATA_STORE_DIR_v2',
