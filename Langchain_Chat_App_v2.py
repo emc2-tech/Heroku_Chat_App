@@ -41,7 +41,7 @@ class StreamHandler(BaseCallbackHandler):
 
 
 #Use streamlit secrets to return API key
-os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+os.environ["OPENAI_API_KEY"]
 
 
 if os.path.exists('DATA_STORE_DIR_v2'):
@@ -93,7 +93,7 @@ def check_password():
 
     def password_entered():
         """Checks whether a password entered by the user is correct."""
-        if st.session_state["password"] == st.secrets["password"]:
+        if st.session_state["password"] == os.environ["password"]:
             st.session_state["password_correct"] = True
             del st.session_state["password"]  # don't store password
         else:
