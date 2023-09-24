@@ -58,7 +58,7 @@ from langchain.prompts.chat import (
 )
 
 system_template="""You are a helpful sales agent working for Unique Japan Tours. You have been trained on all the information on the company website.
-Use the following pieces of context to answer the users question. Take note of the sources and include them at the end of your reply, use "SOURCES:" in capital letters regardless of the number of sources, followed by the url hyperlink of each source.
+Use the following pieces of context to answer the customers question in a short and concise way. Take note of the sources and include them at the end of your reply, use "SOURCES:" in capital letters regardless of the number of sources, followed by the url hyperlink of each source.
 If you don't know the answer, just say that "I don't know", don't try to make up an answer but refer this query to the team at Unique Japan Tours who can help (https://www.uniquejapantours.com/contact-us/)
 ----------------
 {summaries}"""
@@ -149,8 +149,7 @@ if check_password():
 
             #Define & call model
             stream_handler = StreamHandler(message_placeholder, display_method='write')
-            llm = ChatOpenAI(model_name="gpt-3.5-turbo", streaming=True, callbacks=[stream_handler], temperature=0,
-                             max_tokens=512)  # Modify model_name if you have access to GPT-4
+            llm = ChatOpenAI(model_name="gpt-3.5-turbo", streaming=True, callbacks=[stream_handler], temperature=0)  # Modify model_name if you have access to GPT-4
             chain = RetrievalQAWithSourcesChain.from_chain_type(
                 llm=llm,
                 chain_type="stuff",
